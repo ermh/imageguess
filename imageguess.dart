@@ -1,34 +1,34 @@
-#import('dart:dom');
+#import('dart:html');
 #resource('style.css');
 
 class HiddenNumber {
   int gridsize = 4;
-  HTMLDivElement div,textelm,coverelm;
+  DivElement div,textelm,coverelm;
   
-  HTMLDivElement element() {
+  DivElement element() {
     if (div != null) {
       return div;
     }
     
-    HTMLDocument d = window.document;
+    Document d = window.document;
     
     div = d.createElement('div');
-    div.className = "hiddennumber";
+    div.classes = "hiddennumber";
     
     textelm = d.createElement('div');
-    textelm.className = 'hiddentext';
+    textelm.classes = 'hiddentext';
     
     coverelm = d.createElement('div');
-    coverelm.className = 'hiddencover';
+    coverelm.classes = 'hiddencover';
     
     for(int i=0; i<gridsize; i++) {
       for(int j=0; i<gridsize; i++) {
-        HTMLDivElement sq = d.createElement('div');
-        sq.className = "opaque";
-        sq.onclick = (Event e) {
-          sq.className = "transparent";
-        };
-        coverelm.appendChild(sq);
+        DivElement sq = d.createElement('div');
+        sq.classes = "opaque";
+        sq.on.click.add((Event e) {
+          sq.classes = "transparent";
+        });
+        coverelm.elements.add(sq);
       }
     }
     
@@ -53,10 +53,10 @@ class imageguess {
 
   void write(String message) {
     // the DOM library defines a global "window" variable
-    HTMLDocument doc = window.document;
-    HTMLParagraphElement p = doc.createElement('p');
-    p.textContent = message;
-    doc.body.appendChild(p);
+    Document doc = window.document;
+    ParagraphElement p = doc.createElement('p');
+    p.text = message;
+    doc.body.insertBefore(p);//appendChild(p);
   }
 }
 
